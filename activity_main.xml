@@ -5,7 +5,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"> <!-- -->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,13 +17,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            tools:text="Token:" />
+            tools:text="Token: 089d841ccc194c10a77afad9e1c11d54" />
 
         <Button
+            android:id="@+id/token_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:onClick="onRequestTokenClicked"
             android:text="Request Token" />
 
         <TextView
@@ -31,13 +31,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            tools:text="Code:" />
+            tools:text="Code: 089d841ccc194c10a77afad9e1c11d54" />
 
         <Button
+            android:id="@+id/code_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:onClick="onRequestCodeClicked"
             android:text="Request Code" />
 
         <TextView
@@ -52,13 +52,12 @@
             android:layout_height="wrap_content">
 
             <Button
-                android:id="@+id/btn_get_profile"
+                android:id="@+id/profile_btn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:onClick="onGetUserProfileClicked"
                 android:text="Get User Profile" />
         </LinearLayout>
     </LinearLayout>
