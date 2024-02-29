@@ -1,22 +1,13 @@
 package com.example.rawspotifysdk;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
-import com.google.android.material.snackbar.Snackbar;
 import com.spotify.sdk.android.auth.AuthorizationClient;
 import com.spotify.sdk.android.auth.AuthorizationRequest;
 import com.spotify.sdk.android.auth.AuthorizationResponse;
@@ -39,11 +30,9 @@ public class MainActivity extends AppCompatActivity {
 
     private final OkHttpClient mOkHttpClient = new OkHttpClient();
     private String mAccessToken;
-    private String mAccessCode;
     private Call mCall;
 
     private TextView tokenTextView, codeTextView, profileTextView;
-    private Button tokenBtn, codeBtn, profileBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,12 +45,12 @@ public class MainActivity extends AppCompatActivity {
         profileTextView = (TextView) findViewById(R.id.response_text_view);
 
         // Initialize the buttons
-        tokenBtn = (Button) findViewById(R.id.token_btn);
-        codeBtn = (Button) findViewById(R.id.code_btn);
-        profileBtn = (Button) findViewById(R.id.profile_btn);
+        Button tokenBtn = (Button) findViewById(R.id.token_btn);
+        Button codeBtn = (Button) findViewById(R.id.code_btn);
+        Button profileBtn = (Button) findViewById(R.id.profile_btn);
 
         // Set the click listeners for the buttons
-        
+
         tokenBtn.setOnClickListener((v) -> {
             getToken();
         });
@@ -110,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
         } else if (AUTH_CODE_REQUEST_CODE == requestCode) {
             // If the result is successful, get the code
-            mAccessCode = response.getCode();
+            String mAccessCode = response.getCode();
             codeTextView.setText(getString(R.string.code, mAccessCode));
         }
     }
@@ -157,12 +146,14 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Set profile text view
+     * 
      * @param text the text to set
      */
     private void setProfileTextView(final String text) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                profileTextView.setText("");
                 profileTextView.setText(text);
             }
         });
@@ -170,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Get authentication request
+     * 
      * @param type the type of the request
      * @return the authentication request
      */
