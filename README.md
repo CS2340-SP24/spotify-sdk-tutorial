@@ -129,8 +129,12 @@ private AuthorizationRequest getAuthenticationRequest(AuthorizationResponse.Type
 
 Spotify Scopes are used to limit access of some parts of the API to tokens without the necessary permissions. Some API calls will require more/less invasive scopes for security reasons! [You can read more about Scopes here.](https://developer.spotify.com/documentation/web-api/concepts/scopes)
 
-[In Spotify’s documentation for the User Profile](https://developer.spotify.com/documentation/web-api/reference/get-current-users-profile), there are 2 scopes we need to consider in the request. However, we can discard `user-read-private` since we don’t want to display the subscription details.
+[In Spotify’s documentation for the User Profile](https://developer.spotify.com/documentation/web-api/reference/get-current-users-profile), there are 2 scopes we need to consider in the request (picture attached below). However, we can discard `user-read-private` since we don’t want to display the subscription details.
 
 In our example, we will retrieve the current user’s information. We use `user-read-email` scope to request the current user’s information.
 
 <img src="./img/sdk3.png" width=300 />
+
+## Troubleshooting Tips:
+
+- If you encounter a "Redirect URI Mismatch" error, make sure that the redirect URI specified in your Spotify Developer Dashboard matches the one in your AndroidManifest.xml file.
