@@ -28,7 +28,7 @@ We now need to configure the `manifestPlaceholders` so that the redirect URI for
 manifestPlaceholders = [redirectSchemeName: "spotify-sdk", redirectHostName: "auth"]
 ```
 
-After all of this, your Gradle file should look similar to the screenshot below. Make sure to sync your Gradle project before moving on!
+After all of this, your Gradle file should look similar to the example below. Make sure to sync your Gradle project before moving on!
 
 ```gradle
 plugins {
