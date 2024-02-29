@@ -20,9 +20,9 @@ dependencies {
 }
 ```
 
-The Spotify Auth package is the official method of interfacing with the Spotify API on Android and removes a lot of the complexity in authenticating requests. The OkHttp package simplifies making requests to the API.
+The Spotify Auth package is the official method of interfacing with the Spotify API on Android and removes a lot of the complexity in authenticating requests. The `OkHttp package` simplifies making requests to the API.
 
-We now need to configure the manifestPlaceholders so that the redirect URI for Spotify Authentication works properly. The redirectSchemeName should be the name of your Android package!
+We now need to configure the `manifestPlaceholders` so that the redirect URI for Spotify Authentication works properly. **The `redirectSchemeName` should be the name of your Android package!**
 
 ```gradle
 manifestPlaceholders = [redirectSchemeName: "spotify-sdk", redirectHostName: "auth"]
