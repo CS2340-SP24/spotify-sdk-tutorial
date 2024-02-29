@@ -109,7 +109,7 @@ The Sample ActivityMain.java file which is compatible with the given layout abov
 
 ## The result
 
-<img src="./img/sample.png" width=500 />
+<img src="./img/sample.png" width=400 />
 
 ## Important
 
