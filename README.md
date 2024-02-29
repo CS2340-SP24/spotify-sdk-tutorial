@@ -109,17 +109,30 @@ The Sample ActivityMain.java file which is compatible with the given layout abov
 
 ## How to make a request for User Profile?
 
+### 1. Obtain Authorization Token
+
+Before making any requests to the Spotify API, you need to obtain an authorization token. This token will be used to authenticate your requests. We have make a dedicated Request Token button in the Sample App.
+
+### 2. Understand the User Profile Endpoint
+
 Go to this link [Get Current User Profile](https://developer.spotify.com/documentation/web-api/reference/get-current-users-profile)
 
-You will see a screen like this with interactive API request prompt on the right side, take a look at the Request with Authorization part:
+On the documentation page, locate the "Request with Authorization" section. This section provides details on how to construct a request to retrieve a user's profile.
 
 <img src="./img/request.png" width=800 />
 
 <br />
 
-The `Request with Authorization` includes 2 parts: Endpoint URL + Authorization Header
+### 3. Analyze the Endpoint URL and Authorization Header
 
-- The token we obtain from `Request Token` action will be placed after `Bearer`
+The `Request with Authorization` includes 2 parts:
+
+-   Endpoint URL: This is the URL where you send your request to retrieve the user's profile. In this case, it is https://api.spotify.com/v1/me.
+-   Authorization Header: This header includes the authorization token obtained from pressing on the Request Token. It should be formatted as `"Bearer <authorization_token>"`
+
+-   The token we obtain from `Request Token` action will be placed after `Bearer`
+
+### 4. Implement the Request in Java
 
 Below is how we combine the `Endpoint URL` and the `Authorization Header` in Java.
 
@@ -131,9 +144,14 @@ Below is how we combine the `Endpoint URL` and the `Authorization Header` in Jav
                 .build();
 ```
 
+### 5. Visualize the Return Information
+
 After obtaining the information, it's up to you to malnipulate the `Return Information` and visualize it in your app.
 
-## The result
+Example:
+<img src="./img/sample.jpeg" width=800 />
+
+## The Sample Result
 
 <img src="./img/sample.png" width=400 />
 
@@ -171,4 +189,4 @@ Use the section **How to make a request for User Profile?** above as an example 
 
 ## Troubleshooting Tips:
 
-- If you encounter a "Redirect URI Mismatch" error, make sure that the redirect URI specified in your Spotify Developer Dashboard matches the one in your AndroidManifest.xml file.
+-   If you encounter a "Redirect URI Mismatch" error, make sure that the redirect URI specified in your Spotify Developer Dashboard matches the one in your AndroidManifest.xml file.
