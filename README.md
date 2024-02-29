@@ -149,6 +149,7 @@ Below is how we combine the `Endpoint URL` and the `Authorization Header` in Jav
 After obtaining the information, it's up to you to malnipulate the `Return Information` and visualize it in your app.
 
 Example:
+
 <img src="./img/sample.jpeg" width=800 />
 
 ## The Sample Result
@@ -183,7 +184,7 @@ In our example, we will retrieve the current user’s information. We use `user-
 
 Please access [Spotify Web API](https://developer.spotify.com/documentation/web-api), take a look at the left panel, there are a lot of information you can get from this Spotify SDK.
 
-Use the section **How to make a request for User Profile?** above as an example to expand your project.
+Use the section **[How to make a request for User Profile?](https://github.com/thuanvoit/spotify-sdk-tutorial?tab=readme-ov-file#how-to-make-a-request-for-user-profile)** above as an example to expand your project.
 
 <img src="./img/webapi.png" width=800 />
 
