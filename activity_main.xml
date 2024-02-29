@@ -5,7 +5,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"> <!-- -->
+    tools:context=".MainActivity"> 
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            tools:text="Token: 089d841ccc194c10a77afad9e1c11d54" />
+            tools:text="Token:" />
 
         <Button
             android:id="@+id/token_btn"
@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            tools:text="Code: 089d841ccc194c10a77afad9e1c11d54" />
+            tools:text="Code:" />
 
         <Button
             android:id="@+id/code_btn"
