@@ -107,6 +107,32 @@ The Sample ActivityMain.java file which is compatible with the given layout abov
 
 [You can copy the Java code from here](./MainActivity.java)
 
+## How to make a request for User Profile?
+
+Go to this link [Get Current User Profile](https://developer.spotify.com/documentation/web-api/reference/get-current-users-profile)
+
+You will see a screen like this with interactive API request prompt on the right side, take a look at the Request with Authorization part:
+
+<img src="./img/request.png" width=800 />
+
+<br />
+
+The `Request with Authorization` includes 2 parts: Endpoint URL + Authorization Header
+
+- The token we obtain from `Request Token` action will be placed after `Bearer`
+
+Below is how we combine the `Endpoint URL` and the `Authorization Header` in Java.
+
+```java
+// Create a request to get the user profile
+        final Request request = new Request.Builder()
+                .url("https://api.spotify.com/v1/me")
+                .addHeader("Authorization", "Bearer " + mAccessToken)
+                .build();
+```
+
+After obtaining the information, it's up to you to malnipulate the `Return Information` and visualize it in your app.
+
 ## The result
 
 <img src="./img/sample.png" width=400 />
@@ -134,6 +160,14 @@ Spotify Scopes are used to limit access of some parts of the API to tokens witho
 In our example, we will retrieve the current user’s information. We use `user-read-email` scope to request the current user’s information.
 
 <img src="./img/sdk3.png" width=300 />
+
+## What to do next?
+
+Please access [Spotify Web API](https://developer.spotify.com/documentation/web-api), take a look at the left panel, there are a lot of information you can get from this Spotify SDK.
+
+Use the section **How to make a request for User Profile?** above as an example to expand your project.
+
+<img src="./img/webapi.png" width=800 />
 
 ## Troubleshooting Tips:
 
