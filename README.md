@@ -188,6 +188,41 @@ Use the section **[How to make a request for User Profile?](https://github.com/t
 
 <img src="./img/webapi.png" width=800 />
 
+## FAQ:
+
+<details>
+
+<summary>Where do I find the Song's ID and Album's ID?</summary>
+
+Head to [Spotify Web Player](https://open.spotify.com/), open a song you would like to obtain the id. Examine the URL from the address bar:
+
+#### Song/Track:
+
+```text
+https://open.spotify.com/track/36OyVzUmUFb1MTTzy3YXbh
+```
+
+-   `36OyVzUmUFb1MTTzy3YXbh` is the song's ID
+
+#### Album:
+
+```url
+https://open.spotify.com/album/2nLOHgzXzwFEpl62zAgCEC
+```
+
+-   `2nLOHgzXzwFEpl62zAgCEC` is the album's ID
+</details>
+
 ## Troubleshooting Tips:
 
+### Redirect URI Mismatch
+
 -   If you encounter a "Redirect URI Mismatch" error, make sure that the redirect URI specified in your Spotify Developer Dashboard matches the one in your AndroidManifest.xml file.
+
+### 429 Error Response
+
+-   Spotify's Web API implements rate limits to ensure the reliability of its services and to promote responsible usage among third-party developers. The rate limit is calculated based on the number of API calls made by an application within a rolling 30-second window.
+
+-   When an application surpasses Spotify's rate limit, it receives a 429 error response from the Web API. This indicates that the application has reached its rate limit and needs to throttle its requests.
+
+-   For more details about rate limits and strategies to overcome the error, please review [Spotify Rate Limit](https://developer.spotify.com/documentation/web-api/concepts/rate-limits)
