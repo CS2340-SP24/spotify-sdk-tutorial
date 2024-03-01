@@ -2,15 +2,15 @@
 
 ## 1. Make a new project
 
-To make your new project, get started by creating an empty views activity using Java and Groovy DSL as the build configuration language.
+To make your new project, get started by creating an empty views activity using `Java` and `Groovy DSL` as the build configuration language.
 
-We recommend to use `Minimum SDK API 33` and build with `Groovy DSL` to get the best support from TA teams.
+We highly recommend using `API 33 ("Tiramisu")` to avoid dependency issues and to get the best support from TA team.
 
 <img src="./img/setup.png" width=800 />
 
 ## 2. Setting up your Gradle Files
 
-To integrate the Spotify API into your Android project, we need to integrate the following external dependencies into your Gradle file.
+To integrate the Spotify API into your Android project, we need to include the following external dependencies in your Gradle file:
 
 ```gradle
 dependencies {
@@ -25,7 +25,7 @@ The Spotify Auth package is the official method of interfacing with the Spotify 
 We now need to configure the `manifestPlaceholders` so that the redirect URI for Spotify Authentication works properly. **The `redirectSchemeName` should be the name of your Android package!**
 
 ```gradle
-manifestPlaceholders = [redirectSchemeName: "spotify-sdk", redirectHostName: "auth"]
+manifestPlaceholders = [redirectSchemeName: "<Insert Name of your package>", redirectHostName: "auth"]
 ```
 
 After all of this, your Gradle file should look similar to the example below. Make sure to sync your Gradle project before moving on!
@@ -93,73 +93,46 @@ dependencies {
 
 <img src="./img/sdk2.png" width=800 />
 
-## 4. Create Basic Application
+## 4. Create Demo App
 
 ### 1. Create Basic Layout
 
 Inside an empty `ConstraintLayout`, we will populate with a Linear Layout containing 3 buttons and 3 TextView for the purposes of showing some basic information such as Token, Code, and User Profile you can get from the API request.
 
-[You can copy the XML layout from here.](./activity_main.xml)
+[You can copy the XML layout from here](./activity_main.xml)
 
 ### 2. Create Basic Activity
 
-The Sample ActivityMain.java file which is compatible with the given layout above:
+We provide ActivityMain.java file that provides a simple demo of how to interact with the API in Java. We highly recommend factoring any API interfacing functions into a separate class from the activities to avoid coupling issues, but to keep the demo simple we avoiding doing that here.
+
+**Make sure to plug in your Client ID and redirect URI into the Java file before running the demo!**
 
 [You can copy the Java code from here](./MainActivity.java)
 
-## How to make a request for User Profile?
+### 3. Sample Output
 
-### 1. Obtain Authorization Token
-
-Before making any requests to the Spotify API, you need to obtain an authorization token. This token will be used to authenticate your requests. We have make a dedicated Request Token button in the Sample App.
-
-### 2. Understand the User Profile Endpoint
-
-Go to this link [Get Current User Profile](https://developer.spotify.com/documentation/web-api/reference/get-current-users-profile)
-
-On the documentation page, locate the "Request with Authorization" section. This section provides details on how to construct a request to retrieve a user's profile.
-
-<img src="./img/request.png" width=800 />
-
-<br />
-
-### 3. Analyze the Endpoint URL and Authorization Header
-
-The `Request with Authorization` includes 2 parts:
-
--   Endpoint URL: This is the URL where you send your request to retrieve the user's profile. In this case, it is https://api.spotify.com/v1/me.
--   Authorization Header: This header includes the authorization token obtained from pressing on the Request Token. It should be formatted as `"Bearer <authorization_token>"`
-
--   The token we obtain from `Request Token` action will be placed after `Bearer`
-
-### 4. Implement the Request in Java
-
-Below is how we combine the `Endpoint URL` and the `Authorization Header` in Java.
-
-```java
-// Create a request to get the user profile
-        final Request request = new Request.Builder()
-                .url("https://api.spotify.com/v1/me")
-                .addHeader("Authorization", "Bearer " + mAccessToken)
-                .build();
-```
-
-### 5. Visualize the Return Information
-
-After obtaining the information, it's up to you to malnipulate the `Return Information` and visualize it in your app.
-
-Example:
-
-<img src="./img/sample.jpeg" width=800 />
-
-## The Sample Result
+If you are having any issues with the API, please check the "Troubleshotting Tips" section before asking any TAs for help
 
 <img src="./img/sample.png" width=400 />
 
-## Important
 
-There is a method in `MainActivity.java` allowing you to add scopes into request.
+## API Request Explanation: Fetch User's Profile
 
+### 1. Look at Spotify's documentation for User Profile
+
+[You can view the User profile documentation here](https://developer.spotify.com/documentation/web-api/reference/get-current-users-profile). When attempting to make API requests, the documentation is your greatest tool!
+
+### 2. Obtain Authorization Token
+
+Before making any requests to the Spotify API, you need to obtain an authorization token used to authenticate your requests. However, not all tokens are created equally. You need to specify the scope of the token you want! To figure out what scope you should request, look at the "Authorization scopes" section of a request in the documentation.
+
+Scopes are used to limit access of some parts of the API to tokens without the necessary permissions. Some API calls will require more/less invasive scopes for security reasons! [You can read more about Scopes here.](https://developer.spotify.com/documentation/web-api/concepts/scopes)
+
+[In Spotify’s documentation for the User Profile](https://developer.spotify.com/documentation/web-api/reference/get-current-users-profile), there are 2 scopes we need to consider in the request (picture attached below). We will use `user-read-email` over `user-read-private` since we don’t want to display the subscription details.
+
+<img src="./img/sdk3.png" width=300 />
+
+Below is how the demo code requested a token of scope `user-read-email`
 ```java
 private AuthorizationRequest getAuthenticationRequest(AuthorizationResponse.Type type) {
        return new AuthorizationRequest.Builder(CLIENT_ID, type, getRedirectUri().toString())
@@ -170,24 +143,55 @@ private AuthorizationRequest getAuthenticationRequest(AuthorizationResponse.Type
    }
 ```
 
-### What are Spotify Scopes?
+### 3. Get the Endpoint URL and Authorization Header
 
-Spotify Scopes are used to limit access of some parts of the API to tokens without the necessary permissions. Some API calls will require more/less invasive scopes for security reasons! [You can read more about Scopes here.](https://developer.spotify.com/documentation/web-api/concepts/scopes)
+On the documentation page, locate the "Request with Authorization" section. This section provides details on how to construct a request to retrieve a user's profile.
 
-[In Spotify’s documentation for the User Profile](https://developer.spotify.com/documentation/web-api/reference/get-current-users-profile), there are 2 scopes we need to consider in the request (picture attached below). However, we can discard `user-read-private` since we don’t want to display the subscription details.
+<img src="./img/request.png" width=800 />
 
-In our example, we will retrieve the current user’s information. We use `user-read-email` scope to request the current user’s information.
+<br />
 
-<img src="./img/sdk3.png" width=300 />
+
+The `Request with Authorization` includes 2 parts:
+
+-   Endpoint URL: This is the URL where you send your request to retrieve the user's profile. In this case, it is https://api.spotify.com/v1/me.
+-   Authorization Header: **This header includes the authorization token**. It should be formatted as `"Bearer <authorization_token>"`
+
+### 4. Implement the Request in Java
+
+Below is how the demo code combined the `Endpoint URL` and the `Authorization Header` in a Request
+
+```java
+// Create a request to get the user profile
+        final Request request = new Request.Builder()
+                .url("https://api.spotify.com/v1/me")
+                .addHeader("Authorization", "Bearer " + mAccessToken)
+                .build();
+```
 
 ## What to do next?
 
-Please access [Spotify Web API](https://developer.spotify.com/documentation/web-api), take a look at the left panel, there are a lot of information you can get from this Spotify SDK.
-
-Use the section **[How to make a request for User Profile?](https://github.com/thuanvoit/spotify-sdk-tutorial?tab=readme-ov-file#how-to-make-a-request-for-user-profile)** above as an example to expand your project.
+#### 1. Read over the [Spotify Web API](https://developer.spotify.com/documentation/web-api) documentation to get a better sense of the API's capabilities and what information you can request.
 
 <img src="./img/webapi.png" width=800 />
 
+#### 2. Think about how to parse and visualize the information from the API
+
+Example:
+
+<img src="./img/sample.jpeg" width=800 />
+
+
 ## Troubleshooting Tips:
 
+### Redirect URI Mismatch
+
 -   If you encounter a "Redirect URI Mismatch" error, make sure that the redirect URI specified in your Spotify Developer Dashboard matches the one in your AndroidManifest.xml file.
+
+### 429 Error Response
+
+-   Spotify's Web API implements rate limits to ensure the reliability of its services and to promote responsible usage among third-party developers. The rate limit is calculated based on the number of API calls made by an application within a rolling 30-second window.
+
+-   When an application surpasses Spotify's rate limit, it receives a 429 error response from the Web API. This indicates that the application has reached its rate limit and needs to throttle its requests.
+
+-   For more details about rate limits and strategies to overcome the error, please review [Spotify Rate Limit](https://developer.spotify.com/documentation/web-api/concepts/rate-limits)
