@@ -10,7 +10,7 @@ We highly recommend using `API 33 ("Tiramisu")` to avoid dependency issues and t
 
 ## 2. Setting up your Gradle Files
 
-To integrate the Spotify API into your Android project, we need to integrate the following external dependencies into your Gradle file.
+To integrate the Spotify API into your Android project, we need to include the following external dependencies in your Gradle file:
 
 ```gradle
 dependencies {
@@ -122,7 +122,7 @@ If you are having any issues with the API, please check the "Troubleshotting Tip
 
 [You can view the User profile documentation here](https://developer.spotify.com/documentation/web-api/reference/get-current-users-profile). When attempting to make API requests, the documentation is your greatest tool!
 
-### 1. Obtain Authorization Token
+### 2. Obtain Authorization Token
 
 Before making any requests to the Spotify API, you need to obtain an authorization token used to authenticate your requests. However, not all tokens are created equally. You need to specify the scope of the token you want! To figure out what scope you should request, look at the "Authorization scopes" section of a request in the documentation.
 
@@ -143,7 +143,7 @@ private AuthorizationRequest getAuthenticationRequest(AuthorizationResponse.Type
    }
 ```
 
-### 2. Get the Endpoint URL and Authorization Header
+### 3. Get the Endpoint URL and Authorization Header
 
 On the documentation page, locate the "Request with Authorization" section. This section provides details on how to construct a request to retrieve a user's profile.
 
@@ -157,7 +157,7 @@ The `Request with Authorization` includes 2 parts:
 -   Endpoint URL: This is the URL where you send your request to retrieve the user's profile. In this case, it is https://api.spotify.com/v1/me.
 -   Authorization Header: **This header includes the authorization token**. It should be formatted as `"Bearer <authorization_token>"`
 
-### 3. Implement the Request in Java
+### 4. Implement the Request in Java
 
 Below is how the demo code combined the `Endpoint URL` and the `Authorization Header` in a Request
 
