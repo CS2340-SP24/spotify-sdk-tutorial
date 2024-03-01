@@ -2,9 +2,9 @@
 
 ## 1. Make a new project
 
-To make your new project, get started by creating an empty views activity using Java and Groovy DSL as the build configuration language.
+To make your new project, get started by creating an empty views activity using `Java` and `Groovy DSL` as the build configuration language.
 
-We recommend to use `Minimum SDK API 33` and build with `Groovy DSL` to get the best support from TA teams.
+We highly recommend using `API 33 ("Tiramisu")` to avoid dependency issues and to get the best support from TA team.
 
 <img src="./img/setup.png" width=800 />
 
@@ -105,11 +105,13 @@ Inside an empty `ConstraintLayout`, we will populate with a Linear Layout contai
 
 We provide ActivityMain.java file that provides a simple demo of how to interact with the API in Java. We highly recommend factoring any API interfacing functions into a separate class from the activities to avoid coupling issues, but to keep the demo simple we avoiding doing that here.
 
-**Make sure to plug in your Client ID and redirect URI into the Java file before running the demo!** If you encounter a "Redirect URI Mismatch" error, make sure that the redirect URI specified in your Spotify Developer Dashboard matches the one in your AndroidManifest.xml file.
+**Make sure to plug in your Client ID and redirect URI into the Java file before running the demo!**
 
 [You can copy the Java code from here](./MainActivity.java)
 
 ### 3. Sample Output
+
+If you are having any issues with the API, please check the "Troubleshotting Tips" section before asking any TAs for help
 
 <img src="./img/sample.png" width=400 />
 
@@ -153,9 +155,7 @@ On the documentation page, locate the "Request with Authorization" section. This
 The `Request with Authorization` includes 2 parts:
 
 -   Endpoint URL: This is the URL where you send your request to retrieve the user's profile. In this case, it is https://api.spotify.com/v1/me.
--   Authorization Header: This header includes the authorization token obtained from pressing on the Request Token. It should be formatted as `"Bearer <authorization_token>"`
-
--   The token we obtain from `Request Token` action will be placed after `Bearer`
+-   Authorization Header: **This header includes the authorization token**. It should be formatted as `"Bearer <authorization_token>"`
 
 ### 3. Implement the Request in Java
 
@@ -181,31 +181,6 @@ Example:
 
 <img src="./img/sample.jpeg" width=800 />
 
-
-## FAQ:
-
-<details>
-
-<summary>Where do I find the Song's ID and Album's ID?</summary>
-
-Head to [Spotify Web Player](https://open.spotify.com/), open a song you would like to obtain the id. Examine the URL from the address bar:
-
-#### Song/Track:
-
-```text
-https://open.spotify.com/track/36OyVzUmUFb1MTTzy3YXbh
-```
-
--   `36OyVzUmUFb1MTTzy3YXbh` is the song's ID
-
-#### Album:
-
-```url
-https://open.spotify.com/album/2nLOHgzXzwFEpl62zAgCEC
-```
-
--   `2nLOHgzXzwFEpl62zAgCEC` is the album's ID
-</details>
 
 ## Troubleshooting Tips:
 
