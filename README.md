@@ -91,11 +91,11 @@ dependencies {
 4. Click `Save` to create your application
 5. Click `Setting` to retrieve the `CLIENT-ID` for your application. This is necessary for connecting to the API and will be used in the demo code below
 
+<img src="./img/sdk2.png" width=800 />
+
 ## !! IMPORTANT
 
 You have the option to modify the `redirectSchemeName` to any other value, but it is important to ensure that it matches in all places such as the Spotify Developer Dashboard Redirect URIs, Android Gradle, and REDIRECT_URI in MainActivity.java.
-
-<img src="./img/sdk2.png" width=800 />
 
 ## 4. Create Demo App
 
