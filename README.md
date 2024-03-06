@@ -22,10 +22,10 @@ dependencies {
 
 The Spotify Auth package is the official method of interfacing with the Spotify API on Android and removes a lot of the complexity in authenticating requests. The `OkHttp package` simplifies making requests to the API.
 
-We now need to configure the `manifestPlaceholders` so that the redirect URI for Spotify Authentication works properly. **The `redirectSchemeName` should be the name of your Android package!**
+We now need to configure the `manifestPlaceholders` so that the redirect URI for Spotify Authentication works properly. **The `redirectSchemeName` can be anything. We prefer your App Name!**
 
 ```gradle
-manifestPlaceholders = [redirectSchemeName: "<Insert Name of your package>", redirectHostName: "auth"]
+manifestPlaceholders = [redirectSchemeName: "<Insert App Name>", redirectHostName: "auth"]
 ```
 
 After all of this, your Gradle file should look similar to the example below. Make sure to sync your Gradle project before moving on!
@@ -84,12 +84,16 @@ dependencies {
     - `App description`: Describe what your app does
     - `Redirect URIs`: [redirectSchemeName]://[redirectHostName]
         - Check your `manifestPlaceholders`!
-        - As seen above, redirectSchemeName = “**spotify-sdk**” and redirectHostName = “**auth**”
-        - Therefore, my redirect URI is `spotify-sdk://auth`
+        - As seen above, redirectSchemeName = “**SPOTIFY-SDK**” and redirectHostName = “**auth**”
+        - Therefore, my redirect URI is `SPOTIFY-SDK://auth`
     - `APIs used`: select `Android`, `Web Playback SDK`, and `Web API`
 3. Read Spotify's Developer Terms of Service and Design Guidelines carefully (😂). Click on “I understand and agree with Spotify's Developer Terms of Service and Design Guidelines”
 4. Click `Save` to create your application
 5. Click `Setting` to retrieve the `CLIENT-ID` for your application. This is necessary for connecting to the API and will be used in the demo code below
+
+## !! IMPORTANT
+
+You have the option to modify the `redirectSchemeName` to any other value, but it is important to ensure that it matches in all places such as the Spotify Developer Dashboard Redirect URIs, Android Gradle, and REDIRECT_URI in MainActivity.java.
 
 <img src="./img/sdk2.png" width=800 />
 
@@ -186,7 +190,7 @@ Example:
 
 ### Redirect URI Mismatch
 
--   If you encounter a "Redirect URI Mismatch" error, make sure that the redirect URI specified in your Spotify Developer Dashboard matches the one in your AndroidManifest.xml file.
+-   If you encounter a "Redirect URI Mismatch" error, make sure that the redirect URI specified in your Spotify Developer Dashboard matches the one in your Gradle file and defined REDIRECT_URI in Java files.
 
 ### 429 Error Response
 
