@@ -36,7 +36,7 @@ plugins {
 }
 
 android {
-    namespace 'com.example.spotify_sdk'
+    namespace 'com.example.spotify_sdk' // <--- THIS IS YOUR PACKAGE NAME
     compileSdk 33
 
     defaultConfig {
@@ -46,7 +46,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        manifestPlaceholders = [redirectSchemeName: "spotify-sdk", redirectHostName: "auth"]
+        manifestPlaceholders = [redirectSchemeName: "com.example.spotify_sdk", redirectHostName: "auth"] // <--- PUT YOUR PACKAGE NAME HERE
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
