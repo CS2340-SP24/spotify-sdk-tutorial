@@ -97,6 +97,9 @@ dependencies {
 
 You have the option to modify the `redirectSchemeName` to any other value, but it is important to ensure that it matches in all places such as the Spotify Developer Dashboard Redirect URIs, Android Gradle, and REDIRECT_URI in MainActivity.java.
 
+<img src="./img/redirect_uri.png" width=800 />
+
+
 ## 4. Create Demo App
 
 ### 1. Create Basic Layout
