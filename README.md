@@ -93,9 +93,9 @@ dependencies {
 
 <img src="./img/sdk2.png" width=800 />
 
-## !! IMPORTANT
+### Redirect URI Modifications
 
-You have the option to modify the `redirectSchemeName` to any other value, but it is important to ensure that it matches in all places such as the Spotify Developer Dashboard Redirect URIs, Android Gradle, and REDIRECT_URI in MainActivity.java.
+You can modify change the redirect URI at any time on the Spotify Developer Dashboard. However, it is important to ensure that it matches in all relevant places if you change it! See the image below for an explanation.
 
 <img src="./img/redirect_uri.png" width=800 />
 
@@ -190,6 +190,10 @@ Example:
 
 
 ## Troubleshooting Tips:
+
+### Blank Screen With No Redirect when Attempting to Get Token/Code
+
+- See "Redirect URI Mismatch" below
 
 ### Redirect URI Mismatch
 
