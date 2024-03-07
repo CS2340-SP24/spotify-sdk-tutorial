@@ -36,7 +36,7 @@ plugins {
 }
 
 android {
-    namespace 'com.example.spotify_sdk'
+    namespace 'com.example.spotify_sdk'  // <<---- YOUR PACKAGE NAME
     compileSdk 33
 
     defaultConfig {
@@ -198,6 +198,12 @@ Example:
 ### Redirect URI Mismatch
 
 -   If you encounter a "Redirect URI Mismatch" error, make sure that the redirect URI specified in your Spotify Developer Dashboard matches the one in your Gradle file and defined REDIRECT_URI in Java files.
+
+### Cannot Redirect back to App
+
+- Symptoms: Spotify Blank Page, Cannot Press Login Button, Cannot Grant Permission, Stuck in Chrome Browser.
+
+- **Potential Solution**: If you are using `redirectSchemeName` = **spotify-sdk** or any unique name but you are not able to redirect back to your app. To solve the problem, alter the redirectSchemeName with your APP_PACKAGE_NAME which can be found in your Gradle file. Take a look above. E.g. com.example.spotify_sdk.
 
 ### 429 Error Response
 
