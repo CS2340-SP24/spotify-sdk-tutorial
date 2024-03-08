@@ -76,6 +76,34 @@ dependencies {
 }
 ```
 
+## Setup AndroidManifest.xml
+
+```xml
+<activity
+      android:name=".MainActivity"
+      android:label="@string/app_name"
+      android:launchMode="singleInstance" >
+
+      // An intent filter that will receive the response
+      // from the authentication service
+      <intent-filter>
+          <action android:name="android.intent.action.VIEW"/>
+
+          <category android:name="android.intent.category.DEFAULT"/>
+          <category android:name="android.intent.category.BROWSABLE"/>
+
+          // this needs to match the scheme and host of the redirect URI as defined in My applications page
+          <data
+              android:host="callback"
+              android:scheme="SPOTIFY-SDK"/>
+     </intent-filter>
+
+     <intent-filter>
+          // Other intent filters this activity requires
+      </intent-filter>
+</activity>
+```
+
 ## 3. Register Your App on Spotify for Developers
 
 1. Go to [Spotify for Developer Dashboard](https://developer.spotify.com/dashboard)
