@@ -278,4 +278,4 @@ Check on Ed Discussion for any posts with your specific error. If there aren't a
 
 -   For more details about rate limits and strategies to overcome the error, please review [Spotify Rate Limit](https://developer.spotify.com/documentation/web-api/concepts/rate-limits)
 
-<details>
+</details>
