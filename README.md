@@ -36,7 +36,7 @@ plugins {
 }
 
 android {
-    namespace 'com.example.spotify_sdk'
+    namespace 'com.example.spotify_sdk'  // <<---- YOUR PACKAGE NAME
     compileSdk 33
 
     defaultConfig {
@@ -76,6 +76,26 @@ dependencies {
 }
 ```
 
+## Setup AndroidManifest.xml
+
+```xml
+...
+<activity
+    android:name=".MainActivity"
+    android:exported="true">
+    <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+
+        // Match the scheme and host of the redirect URI
+        // Must be the same in MainAcitivity, Gradle, and Spotify Dashboard!
+        <data android:host="auth" android:scheme="spotify-sdk"/>
+
+    </intent-filter>
+</activity>
+...
+```
+
 ## 3. Register Your App on Spotify for Developers
 
 1. Go to [Spotify for Developer Dashboard](https://developer.spotify.com/dashboard)
@@ -99,7 +119,6 @@ You can modify change the redirect URI at any time on the Spotify Developer Dash
 
 <img src="./img/redirect_uri.png" width=800 />
 
-
 ## 4. Create Demo App
 
 ### 1. Create Basic Layout
@@ -122,7 +141,6 @@ If you are having any issues with the API, please check the "Troubleshotting Tip
 
 <img src="./img/sample.png" width=400 />
 
-
 ## API Request Explanation: Fetch User's Profile
 
 ### 1. Look at Spotify's documentation for User Profile
@@ -135,11 +153,12 @@ Before making any requests to the Spotify API, you need to obtain an authorizati
 
 Scopes are used to limit access of some parts of the API to tokens without the necessary permissions. Some API calls will require more/less invasive scopes for security reasons! [You can read more about Scopes here.](https://developer.spotify.com/documentation/web-api/concepts/scopes)
 
-[In Spotify’s documentation for the User Profile](https://developer.spotify.com/documentation/web-api/reference/get-current-users-profile), there are 2 scopes we need to consider in the request (picture attached below). We will use `user-read-email` over `user-read-private` since we don’t want to display the subscription details.
+[In Spotify’s documentation for the User Profile](https://developer.spotify.com/documentation/web-api/reference/get-current-users-profile), there are 2 scopes we need to consider in the request (picture attached below). We will use `user-read-email` over `user-read-private` since we don’t want to display subscription details.
 
 <img src="./img/sdk3.png" width=300 />
 
 Below is how the demo code requested a token of scope `user-read-email`
+
 ```java
 private AuthorizationRequest getAuthenticationRequest(AuthorizationResponse.Type type) {
        return new AuthorizationRequest.Builder(CLIENT_ID, type, getRedirectUri().toString())
@@ -157,7 +176,6 @@ On the documentation page, locate the "Request with Authorization" section. This
 <img src="./img/request.png" width=800 />
 
 <br />
-
 
 The `Request with Authorization` includes 2 parts:
 
@@ -188,21 +206,76 @@ Example:
 
 <img src="./img/sample.jpeg" width=800 />
 
-
 ## Troubleshooting Tips:
 
-### Blank Screen With No Redirect when Attempting to Get Token/Code
 
-- See "Redirect URI Mismatch" below
+### Issues Getting Token/Code from Spotify
 
-### Redirect URI Mismatch
+Your issues may include
+-  Blank screen with no redirect when attempting to get token/code
+- "Redirect URI Mismatch" error
+-  Blank Spotify page
+-  Unable to press login button
+-  Unable to grant permission
+-  Stuck in Chrome browser
 
--   If you encounter a "Redirect URI Mismatch" error, make sure that the redirect URI specified in your Spotify Developer Dashboard matches the one in your Gradle file and defined REDIRECT_URI in Java files.
+<details>
+<summary><strong>Click here for instructions on fixing these issues</strong></summary>
+
+#### 1. **Please follow the instructions below step by step! There is no need to continue if one step fixes your problems!**
+
+#### 2.  Verify You Don't Have a URI Mismatch
+
+-   If you encounter a "Redirect URI Mismatch" error, make sure that the redirect URI specified in your Spotify Developer Dashboard matches in your:
+    -   Gradle file
+    -   Java files
+    -   AndroidManifest.xml file
+-   Triple-check all redirect URIs match before proceeding!
+
+
+#### 3. Use `PACKAGE_NAME` as redirectSchemeName
+
+-   Check if you are using `redirectSchemeName` = **spotify-sdk** or any other non-package name
+-   Replace redirectSchemeName with your APP_PACKAGE_NAME (can be found in your Gradle file)
+
+
+#### 4. Manually Add the Android Package to your Dashboard:
+
+-   Go to Android Studio, Open Gradle manager on right sidebar, run the command:
+
+```bash
+gradle signingreport
+```
+
+<img src='./img/gradle-key.png' width=800 />
+
+A terminal will open with SHA1 like below:
+
+<img src='./img/sha1.png' width=800 />
+
+Copy `PACKAGE_NAME` and the `SHA1` key and put it on Spotify App's Developer Setting.
+
+<img src='./img/dev-sha1.png' width=800 />
+
+
+#### 5. None of the Previous Solutions Worked
+
+Check on Ed Discussion for any posts with your specific error. If there aren't any, please make a public post on Ed including the following information:
+- System OS
+- Android Studio version
+- Screenshots of your issue
+
+</details>
 
 ### 429 Error Response
+
+<details>
+<summary><strong>Click here for instructions on fixing this issue</strong></summary>
 
 -   Spotify's Web API implements rate limits to ensure the reliability of its services and to promote responsible usage among third-party developers. The rate limit is calculated based on the number of API calls made by an application within a rolling 30-second window.
 
 -   When an application surpasses Spotify's rate limit, it receives a 429 error response from the Web API. This indicates that the application has reached its rate limit and needs to throttle its requests.
 
 -   For more details about rate limits and strategies to overcome the error, please review [Spotify Rate Limit](https://developer.spotify.com/documentation/web-api/concepts/rate-limits)
+
+</details>
