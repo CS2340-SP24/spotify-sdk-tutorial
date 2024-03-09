@@ -118,7 +118,6 @@ You can modify change the redirect URI at any time on the Spotify Developer Dash
 
 <img src="./img/redirect_uri.png" width=800 />
 
-
 ## 4. Create Demo App
 
 ### 1. Create Basic Layout
@@ -141,7 +140,6 @@ If you are having any issues with the API, please check the "Troubleshotting Tip
 
 <img src="./img/sample.png" width=400 />
 
-
 ## API Request Explanation: Fetch User's Profile
 
 ### 1. Look at Spotify's documentation for User Profile
@@ -159,6 +157,7 @@ Scopes are used to limit access of some parts of the API to tokens without the n
 <img src="./img/sdk3.png" width=300 />
 
 Below is how the demo code requested a token of scope `user-read-email`
+
 ```java
 private AuthorizationRequest getAuthenticationRequest(AuthorizationResponse.Type type) {
        return new AuthorizationRequest.Builder(CLIENT_ID, type, getRedirectUri().toString())
@@ -176,7 +175,6 @@ On the documentation page, locate the "Request with Authorization" section. This
 <img src="./img/request.png" width=800 />
 
 <br />
-
 
 The `Request with Authorization` includes 2 parts:
 
@@ -207,22 +205,42 @@ Example:
 
 <img src="./img/sample.jpeg" width=800 />
 
-
 ## Troubleshooting Tips:
 
 ### Blank Screen With No Redirect when Attempting to Get Token/Code
 
-- See "Redirect URI Mismatch" below
+-   See "Redirect URI Mismatch" below
 
 ### Redirect URI Mismatch
 
--   If you encounter a "Redirect URI Mismatch" error, make sure that the redirect URI specified in your Spotify Developer Dashboard matches the one in your Gradle file and defined REDIRECT_URI in Java files.
+-   If you encounter a "Redirect URI Mismatch" error, make sure that the redirect URI specified in your Spotify Developer Dashboard matches the one in your:
+    -   **Gradle** file,
+    -   defined **REDIRECT_URI in Java** files,
+    -   and **AndroidManifest.xml** file.
 
 ### Cannot Redirect back to App
 
-- Symptoms: Spotify Blank Page, Cannot Press Login Button, Cannot Grant Permission, Stuck in Chrome Browser.
+-   Symptoms: Spotify Blank Page, Cannot Press Login Button, Cannot Grant Permission, Stuck in Chrome Browser.
 
-- **Potential Solution**: If you are using `redirectSchemeName` = **spotify-sdk** or any unique name but you are not able to redirect back to your app. To solve the problem, alter the redirectSchemeName with your APP_PACKAGE_NAME which can be found in your Gradle file. Take a look above. E.g. com.example.spotify_sdk.
+#### Solution 1: Use `PACKAGE_NAME` as redirectSchemeName
+
+-   If you are using `redirectSchemeName` = **spotify-sdk** or any unique name but you are not able to redirect back to your app. To solve the problem, alter the redirectSchemeName with your APP_PACKAGE_NAME which can be found in your Gradle file. Take a look above. E.g. com.example.spotify_sdk.
+
+#### Solution 2 if Solution 1 does not work:
+
+-   Go to Android Studio, Open Gradle on right sidebar, run the command:
+
+```bash
+gradle signingreport
+```
+
+<img src='./img/gradle-key.png' width=800 />
+
+<img src='./img/sha1.png' width=800 />
+
+Copy `PACKAGE_NAME` and the `SHA1` key and put it on Spotify App's Developer Setting.
+
+<img src='./img/dev-sha1.png' width=800 />
 
 ### 429 Error Response
 
