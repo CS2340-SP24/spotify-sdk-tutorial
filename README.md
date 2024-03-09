@@ -87,7 +87,8 @@ dependencies {
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
 
-        // Match the scheme and host of the redirect URI as defined in MainAcitivity, Gradle, and Developer Site
+        // Match the scheme and host of the redirect URI
+        // Must be the same in MainAcitivity, Gradle, and Spotify Dashboard!
         <data android:host="auth" android:scheme="spotify-sdk"/>
 
     </intent-filter>
@@ -152,7 +153,7 @@ Before making any requests to the Spotify API, you need to obtain an authorizati
 
 Scopes are used to limit access of some parts of the API to tokens without the necessary permissions. Some API calls will require more/less invasive scopes for security reasons! [You can read more about Scopes here.](https://developer.spotify.com/documentation/web-api/concepts/scopes)
 
-[In Spotify’s documentation for the User Profile](https://developer.spotify.com/documentation/web-api/reference/get-current-users-profile), there are 2 scopes we need to consider in the request (picture attached below). We will use `user-read-email` over `user-read-private` since we don’t want to display the subscription details.
+[In Spotify’s documentation for the User Profile](https://developer.spotify.com/documentation/web-api/reference/get-current-users-profile), there are 2 scopes we need to consider in the request (picture attached below). We will use `user-read-email` over `user-read-private` since we don’t want to display subscription details.
 
 <img src="./img/sdk3.png" width=300 />
 
@@ -207,26 +208,34 @@ Example:
 
 ## Troubleshooting Tips:
 
-### Blank Screen With No Redirect when Attempting to Get Token/Code
 
--   See "Redirect URI Mismatch" below
+### Issues Getting Token/Code from Spotify
 
-### Redirect URI Mismatch
+Your issues may include
+-  Blank screen with no redirect when attempting to get token/code
+- "Redirect URI Mismatch" error
+-  Blank Spotify page
+-  Unable to press login button
+-  Unable to grant permission
+-  Stuck in Chrome browser
 
--   If you encounter a "Redirect URI Mismatch" error, make sure that the redirect URI specified in your Spotify Developer Dashboard matches the one in your:
-    -   **Gradle** file,
-    -   defined **REDIRECT_URI in Java** files,
-    -   and **AndroidManifest.xml** file.
 
-### Cannot Redirect back to App
+#### 1.  Verify You Don't Have a URI Mismatch
 
--   Symptoms: Spotify Blank Page, Cannot Press Login Button, Cannot Grant Permission, Stuck in Chrome Browser.
+-   If you encounter a "Redirect URI Mismatch" error, make sure that the redirect URI specified in your Spotify Developer Dashboard matches in your:
+    -   Gradle file
+    -   Java files
+    -   AndroidManifest.xml file
+-   Triple-check all redirect URIs match before proceeding!
 
-#### Solution 1: Use `PACKAGE_NAME` as redirectSchemeName
 
--   If you are using `redirectSchemeName` = **spotify-sdk** or any unique name but you are not able to redirect back to your app. To solve the problem, alter the redirectSchemeName with your APP_PACKAGE_NAME which can be found in your Gradle file. Take a look above. E.g. com.example.spotify_sdk.
+#### 2. Use `PACKAGE_NAME` as redirectSchemeName
 
-#### Solution 2 if Solution 1 does not work:
+-   Check if you are using `redirectSchemeName` = **spotify-sdk** or any other non-package name
+-   Replace redirectSchemeName with your APP_PACKAGE_NAME (can be found in your Gradle file)
+
+
+#### 3. Manually Add the Android Package to your Dashboard:
 
 -   Go to Android Studio, Open Gradle manager on right sidebar, run the command:
 
@@ -243,6 +252,14 @@ A terminal will open with SHA1 like below:
 Copy `PACKAGE_NAME` and the `SHA1` key and put it on Spotify App's Developer Setting.
 
 <img src='./img/dev-sha1.png' width=800 />
+
+
+#### 4. None of the Previous Solutions Worked
+
+Check on Ed Discussion for any posts with your specific error. If there aren't any, please make a public post on Ed including the following information:
+- System OS
+- Android Studio version
+- Screenshots of your issue
 
 ### 429 Error Response
 
