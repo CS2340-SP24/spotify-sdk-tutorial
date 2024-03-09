@@ -219,8 +219,12 @@ Your issues may include
 -  Unable to grant permission
 -  Stuck in Chrome browser
 
+<details>
+<summary><strong>Click here for instructions on fixing these issues</strong></summary>
 
-#### 1.  Verify You Don't Have a URI Mismatch
+#### 1. **Please follow the instructions below step by step! There is no need to continue if one step fixes your problems!**
+
+#### 2.  Verify You Don't Have a URI Mismatch
 
 -   If you encounter a "Redirect URI Mismatch" error, make sure that the redirect URI specified in your Spotify Developer Dashboard matches in your:
     -   Gradle file
@@ -229,13 +233,13 @@ Your issues may include
 -   Triple-check all redirect URIs match before proceeding!
 
 
-#### 2. Use `PACKAGE_NAME` as redirectSchemeName
+#### 3. Use `PACKAGE_NAME` as redirectSchemeName
 
 -   Check if you are using `redirectSchemeName` = **spotify-sdk** or any other non-package name
 -   Replace redirectSchemeName with your APP_PACKAGE_NAME (can be found in your Gradle file)
 
 
-#### 3. Manually Add the Android Package to your Dashboard:
+#### 4. Manually Add the Android Package to your Dashboard:
 
 -   Go to Android Studio, Open Gradle manager on right sidebar, run the command:
 
@@ -254,17 +258,24 @@ Copy `PACKAGE_NAME` and the `SHA1` key and put it on Spotify App's Developer Set
 <img src='./img/dev-sha1.png' width=800 />
 
 
-#### 4. None of the Previous Solutions Worked
+#### 5. None of the Previous Solutions Worked
 
 Check on Ed Discussion for any posts with your specific error. If there aren't any, please make a public post on Ed including the following information:
 - System OS
 - Android Studio version
 - Screenshots of your issue
 
+</details>
+
 ### 429 Error Response
+
+<details>
+<summary><strong>Click here for instructions on fixing this issue</strong></summary>
 
 -   Spotify's Web API implements rate limits to ensure the reliability of its services and to promote responsible usage among third-party developers. The rate limit is calculated based on the number of API calls made by an application within a rolling 30-second window.
 
 -   When an application surpasses Spotify's rate limit, it receives a 429 error response from the Web API. This indicates that the application has reached its rate limit and needs to throttle its requests.
 
 -   For more details about rate limits and strategies to overcome the error, please review [Spotify Rate Limit](https://developer.spotify.com/documentation/web-api/concepts/rate-limits)
+
+<details>
