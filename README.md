@@ -228,13 +228,15 @@ Example:
 
 #### Solution 2 if Solution 1 does not work:
 
--   Go to Android Studio, Open Gradle on right sidebar, run the command:
+-   Go to Android Studio, Open Gradle manager on right sidebar, run the command:
 
 ```bash
 gradle signingreport
 ```
 
 <img src='./img/gradle-key.png' width=800 />
+
+A terminal will open with SHA1 like below:
 
 <img src='./img/sha1.png' width=800 />
 
