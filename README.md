@@ -270,6 +270,17 @@ Check on Ed Discussion for any posts with your specific error. If there aren't a
 
 </details>
 
+### Emulator Crashes, Browser Slow/Blank at Authentication
+
+<details>
+<summary><strong>Click here for instructions on fixing these issues</strong></summary>
+    
+- Edit emulator setting or create a new emulator with a higher VM Heap. Default VM Heap is about ~200 MB. Try to increase to 512 MB or higher.
+
+<img width="618" alt="Screenshot 2024-03-25 at 2 45 06 PM" src="https://github.com/thuanvoit/spotify-sdk-tutorial/assets/21033636/56ab1843-2e69-4a2f-a66b-55238eab61dd">
+
+</details>
+
 ### 429 Error Response
 
 <details>
