@@ -83,15 +83,18 @@ dependencies {
 <activity
     android:name=".MainActivity"
     android:exported="true">
+
     <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
+    </intent-filter>
 
+    <intent-filter>
         // Match the scheme and host of the redirect URI
         // Must be the same in MainAcitivity, Gradle, and Spotify Dashboard!
         <data android:host="auth" android:scheme="SPOTIFY-SDK"/>
-
     </intent-filter>
+
 </activity>
 ...
 ```
