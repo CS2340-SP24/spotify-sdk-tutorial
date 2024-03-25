@@ -211,9 +211,7 @@ Example:
 
 ## Troubleshooting Tips:
 
-The following guides cover most errors you will run into. If you still have issues after following them, check on Ed Discussion for any posts with solutions for your specific error.
-
-[**If you still can't find a solution, please open an issue on this repo with the following information:**](https://github.com/thuanvoit/spotify-sdk-tutorial/issues)
+The following guides cover most errors you will run into. If you still have issues after following them, check on Ed Discussion for any posts with solutions for your specific error. [**If you still can't find a solution, please open an issue on this repo!**](https://github.com/thuanvoit/spotify-sdk-tutorial/issues)
 
 
 ### Issues Getting Token/Code from Spotify
