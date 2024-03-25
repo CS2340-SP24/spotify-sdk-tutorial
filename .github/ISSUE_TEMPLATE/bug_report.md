@@ -1,9 +1,15 @@
+---
+name: Bug Report
+about: Report an issue with the API tutorial
+title: ''
+labels: ''
+assignees: ''
+
+---
+
 # Bug Report
 
-
-<font color = green>
-
-# Read + Delete This Green Section Before Submitting
+# Read + Delete This Section Before Submitting
 
 ### 1. [Quick Guide on Formatting Markdown for Your Issue](https://www.markdownguide.org/cheat-sheet/)
 
@@ -19,5 +25,3 @@
 - System OS
 - Android Studio version
 - Nicely formatted markdown
-
-</font>
