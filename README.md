@@ -260,10 +260,12 @@ Copy `PACKAGE_NAME` and the `SHA1` key and put it on Spotify App's Developer Set
 
 #### 5. None of the Previous Solutions Worked
 
-Check on Ed Discussion for any posts with your specific error. If there aren't any, please make a public post on Ed including the following information:
+Check on Ed Discussion for any posts with your specific error. [**If there aren't any, please open an issue on this repo with the following information:**](https://github.com/thuanvoit/spotify-sdk-tutorial/issues)
+- Any relevant Gradle files
+- Any relevant Java files
+- Screenshot of Spotify dashboard redirect URI
 - System OS
 - Android Studio version
-- Screenshots of your issue
 
 </details>
 
