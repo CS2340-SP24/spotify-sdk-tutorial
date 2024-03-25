@@ -25,3 +25,4 @@ assignees: ''
 - System OS
 - Android Studio version
 - Nicely formatted markdown
+- Screenshot of task manager (if on Windows)

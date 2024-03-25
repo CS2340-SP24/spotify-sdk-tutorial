@@ -214,12 +214,6 @@ Example:
 The following guides cover most errors you will run into. If you still have issues after following them, check on Ed Discussion for any posts with solutions for your specific error.
 
 [**If you still can't find a solution, please open an issue on this repo with the following information:**](https://github.com/thuanvoit/spotify-sdk-tutorial/issues)
-- Any relevant Gradle files
-- Any relevant Java files
-- Screenshot of Spotify dashboard redirect URI
-- System OS
-- Android Studio version
-- Screenshot of task manager (if on Windows)
 
 
 ### Issues Getting Token/Code from Spotify
