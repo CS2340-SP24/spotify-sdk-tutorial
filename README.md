@@ -83,15 +83,18 @@ dependencies {
 <activity
     android:name=".MainActivity"
     android:exported="true">
+
     <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
+    </intent-filter>
 
+    <intent-filter>
         // Match the scheme and host of the redirect URI
         // Must be the same in MainAcitivity, Gradle, and Spotify Dashboard!
         <data android:host="auth" android:scheme="SPOTIFY-SDK"/>
-
     </intent-filter>
+
 </activity>
 ...
 ```
@@ -208,6 +211,8 @@ Example:
 
 ## Troubleshooting Tips:
 
+The following guides cover most errors you will run into. If you still have issues after following them, check on Ed Discussion for any posts with solutions for your specific error. [**If you still can't find a solution, please open an issue on this repo!**](https://github.com/thuanvoit/spotify-sdk-tutorial/issues)
+
 
 ### Issues Getting Token/Code from Spotify
 
@@ -233,7 +238,7 @@ Your issues may include
 -   Triple-check all redirect URIs match before proceeding!
 
 
-#### 3. Use `PACKAGE_NAME` as redirectSchemeName
+#### 3. Use your `PACKAGE_NAME` as redirectSchemeName
 
 -   Check if you are using `redirectSchemeName` = **spotify-sdk** or any other non-package name
 -   Replace redirectSchemeName with your APP_PACKAGE_NAME (can be found in your Gradle file)
@@ -257,15 +262,22 @@ Copy `PACKAGE_NAME` and the `SHA1` key and put it on Spotify App's Developer Set
 
 <img src='./img/dev-sha1.png' width=800 />
 
+</details>
 
-#### 5. None of the Previous Solutions Worked
+### Emulator Crashes, DNS errors, Browser Slow/Blank at Authentication
 
-Check on Ed Discussion for any posts with your specific error. [**If there aren't any, please open an issue on this repo with the following information:**](https://github.com/thuanvoit/spotify-sdk-tutorial/issues)
-- Any relevant Gradle files
-- Any relevant Java files
-- Screenshot of Spotify dashboard redirect URI
-- System OS
-- Android Studio version
+<details>
+<summary><strong>Click here for instructions on fixing these issues</strong></summary>
+
+#### 1. **Please follow the instructions below step by step! There is no need to continue if one step fixes your problems!**
+
+#### 2. Close all unnecessary applications to reduce memory/CPU use
+
+#### 3. Delete your previous emulator device and make a new one, preferably based off an older phone like the Pixel 3A
+
+#### 4. Edit your emulator settings to increase your VM heap. Default VM heap is about ~200 MB, increase it to 512 MB or higher
+
+<img width="618" alt="Screenshot 2024-03-25 at 2 45 06 PM" src="https://github.com/thuanvoit/spotify-sdk-tutorial/assets/21033636/56ab1843-2e69-4a2f-a66b-55238eab61dd">
 
 </details>
 
