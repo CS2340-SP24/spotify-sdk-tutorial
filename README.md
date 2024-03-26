@@ -122,6 +122,12 @@ You can modify change the redirect URI at any time on the Spotify Developer Dash
 
 <img src="./img/redirect_uri.png" width=800 />
 
+### Adding New Users
+
+Since your app is still in development and isn't ready to be deployed to the wider public, you must manually add all users that are allowed to communicate with the API. **The creator of the dashboard does not need to add their name and email, but all your teammates will have to in order to properly test the API on their own.**
+
+<img src="./img/adding_users.png" width=800 />
+
 ## 4. Create Demo App
 
 ### 1. Create Basic Layout
@@ -278,6 +284,15 @@ Copy `PACKAGE_NAME` and the `SHA1` key and put it on Spotify App's Developer Set
 #### 4. Edit your emulator settings to increase your VM heap. Default VM heap is about ~200 MB, increase it to 512 MB or higher
 
 <img width="618" alt="Screenshot 2024-03-25 at 2 45 06 PM" src="https://github.com/thuanvoit/spotify-sdk-tutorial/assets/21033636/56ab1843-2e69-4a2f-a66b-55238eab61dd">
+
+</details>
+
+### Only the Dashboard Owner is Able to Use the API
+
+<details>
+<summary><strong>Click here for instructions on fixing this issues</strong></summary>
+
+#### Please review the "Adding New Users" section inside the "Register Your App on Spotify for Developers" part of the tutorial.
 
 </details>
 
